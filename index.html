@@ -156,8 +156,8 @@ section{position:relative;padding:110px 0}
   font-family:var(--font-display);font-weight:900;letter-spacing:-.03em;
   font-size:clamp(3.2rem,9.2vw,7.4rem);line-height:.94;margin-bottom:22px;
 }
-.hero-title .word{display:inline-block;overflow:hidden;vertical-align:bottom}
-.hero-title .word>span{display:inline-block;transform:translateY(110%);animation:riseIn 1s cubic-bezier(.2,.8,.2,1) forwards}
+.hero-title .word{display:inline-block;overflow:hidden;vertical-align:bottom;padding:0 .18em .07em 0;margin:0 -.18em -.07em 0}
+.hero-title .word>span{display:inline-block;transform:translateY(112%);animation:riseIn 1s cubic-bezier(.2,.8,.2,1) forwards}
 .hero-title .word:nth-child(2)>span{animation-delay:.14s}
 @keyframes riseIn{to{transform:none}}
 .hero-title em{
@@ -259,7 +259,7 @@ section{position:relative;padding:110px 0}
 
 /* ---------------- PROFIL ---------------- */
 #profil{background:var(--bg2)}
-#profil::before,#mix::before,#kuis::before{content:"";position:absolute;inset:0;background-image:var(--noise);pointer-events:none}
+#profil::before,#mix::before,#refleksi::before{content:"";position:absolute;inset:0;background-image:var(--noise);pointer-events:none}
 .profil-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
 .profil-copy p{color:var(--cream-dim);margin-bottom:18px}
 .profil-copy p strong{color:var(--cream)}
@@ -427,7 +427,7 @@ section{position:relative;padding:110px 0}
 @media(max-width:680px){.p-columns{grid-template-columns:1fr}}
 
 /* image strip inside mix */
-.mix-photos{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:26px}
+.mix-photos{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:26px}
 .mix-photo{
   position:relative;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);
   aspect-ratio:1.25;cursor:pointer;
@@ -599,60 +599,6 @@ input[type=range].doneness::-moz-range-thumb{width:22px;height:22px;border-radiu
 .lesson p{color:var(--cream-dim);font-size:.85rem;margin-top:7px}
 @media(max-width:900px){.kes-grid{grid-template-columns:1fr}.lesson-chips{grid-template-columns:1fr}}
 
-/* ---------------- KUIS ---------------- */
-#kuis{background:var(--bg)}
-.quiz-shell{
-  max-width:720px;margin:40px auto 0;
-  background:linear-gradient(160deg,var(--surface2),var(--surface));
-  border:1px solid var(--line);border-radius:30px;
-  padding:clamp(26px,4.5vw,50px);position:relative;overflow:hidden;
-  box-shadow:var(--shadow-lg);
-}
-.quiz-shell::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--red),var(--gold))}
-.quiz-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:22px}
-.quiz-top .q-step{font-family:var(--font-mono);font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
-.quiz-dots{display:flex;gap:7px}
-.quiz-dots i{width:9px;height:9px;border-radius:50%;background:var(--line);transition:.3s}
-.quiz-dots i.cur{background:var(--gold);transform:scale(1.25)}
-.quiz-dots i.ok{background:var(--green)}
-.quiz-dots i.bad{background:var(--red)}
-#quizQuestion{font-family:var(--font-display);font-weight:800;font-size:clamp(1.25rem,2.4vw,1.7rem);line-height:1.3;margin-bottom:26px}
-.quiz-opts{display:grid;gap:11px}
-.q-opt{
-  display:flex;align-items:center;gap:14px;text-align:left;cursor:pointer;
-  background:rgba(18,16,13,.5);border:1px solid var(--line);border-radius:16px;
-  padding:16px 18px;color:var(--cream-dim);font-family:var(--font-body);font-size:.93rem;
-  transition:.25s;width:100%;
-}
-.q-opt .q-letter{
-  width:30px;height:30px;flex:none;border-radius:9px;
-  border:1px solid var(--line);display:flex;align-items:center;justify-content:center;
-  font-family:var(--font-mono);font-size:.72rem;color:var(--muted);transition:.25s;
-}
-.q-opt:not(.locked):hover{border-color:var(--gold);transform:translateX(6px);color:var(--cream)}
-.q-opt:not(.locked):hover .q-letter{border-color:var(--gold);color:var(--gold)}
-.q-opt.correct{border-color:var(--green);background:rgba(143,206,111,.1);color:var(--cream)}
-.q-opt.correct .q-letter{background:var(--green);border-color:var(--green);color:#12220b}
-.q-opt.wrong{border-color:var(--red);background:rgba(224,69,44,.1)}
-.q-opt.wrong .q-letter{background:var(--red);border-color:var(--red);color:var(--cream)}
-.q-opt.locked{cursor:default}
-.q-opt.dim{opacity:.45}
-#quizFeedback{
-  margin-top:20px;min-height:24px;font-family:var(--font-mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--muted);display:flex;align-items:center;gap:9px;
-}
-#quizFeedback.good{color:var(--green)}
-#quizFeedback.bad{color:var(--red)}
-#quizNext{margin-top:18px;display:none}
-#quizNext.show{display:inline-flex;animation:panelIn .4s}
-#quizResult{display:none;text-align:center;padding:16px 0 4px;animation:panelIn .5s}
-#quizResult.show{display:block}
-.qr-score{font-family:var(--font-display);font-weight:900;font-size:clamp(3.4rem,8vw,5.4rem);line-height:1;color:var(--gold)}
-.qr-score small{font-size:38%;color:var(--muted)}
-.qr-msg{font-family:var(--font-display);font-style:italic;font-size:1.3rem;color:var(--cream);margin:14px 0 8px}
-.qr-sub{color:var(--muted);font-size:.88rem;max-width:420px;margin:0 auto 26px}
-.qr-bowl{width:86px;margin:0 auto 10px;display:block}
-
 /* ---------------- FOOTER ---------------- */
 footer{background:#0d0b09;border-top:1px solid var(--line);padding:70px 0 34px;position:relative;overflow:hidden}
 footer::before{content:"";position:absolute;inset:0;background-image:var(--noise);pointer-events:none}
@@ -682,6 +628,87 @@ footer::before{content:"";position:absolute;inset:0;background-image:var(--noise
 #toTop.show{opacity:1;visibility:visible;transform:none}
 #toTop:hover{background:var(--red-deep);transform:translateY(-4px)}
 #toTop svg{width:20px;height:20px}
+
+/* ---------------- WAWANCARA PELANGGAN ---------------- */
+.cust-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.cust-card{background:var(--surface);border:1px solid var(--line);border-radius:26px;padding:30px;position:relative;overflow:hidden;transition:.35s}
+.cust-card::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--gold),var(--red));opacity:.8}
+.cust-card:hover{transform:translateY(-6px);border-color:rgba(240,183,78,.4);box-shadow:0 22px 48px -20px rgba(0,0,0,.8)}
+.cust-head{display:flex;align-items:center;gap:14px;margin-bottom:20px;flex-wrap:wrap}
+.cust-ava{width:52px;height:52px;flex:none;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:900;font-size:1.35rem;color:#181410;background:var(--ac,#f0b74e);box-shadow:0 8px 20px -6px color-mix(in srgb,var(--ac,#f0b74e) 60%,transparent)}
+.cust-id h4{font-family:var(--font-display);font-size:1.25rem}
+.cust-since{font-size:.8rem;color:var(--muted);line-height:1.5;display:block;margin-top:2px}
+.cust-badge{margin-left:auto;font-family:var(--font-mono);font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;border:1px solid var(--line);color:var(--gold);padding:6px 10px;border-radius:999px;white-space:nowrap}
+.cust-dl>div{padding:13px 0;border-top:1px dashed var(--line)}
+.cust-dl dt{font-family:var(--font-mono);font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);display:flex;gap:8px;align-items:center}
+.cust-dl dt i{font-style:normal;color:var(--red)}
+.cust-dl dd{margin-top:7px;color:var(--cream-dim);font-size:.9rem}
+.cust-conclusion{margin-top:26px;display:flex;gap:20px;align-items:flex-start;background:linear-gradient(120deg,rgba(240,183,78,.1),rgba(224,69,44,.07));border:1px solid rgba(240,183,78,.35);border-radius:26px;padding:clamp(24px,3.5vw,40px)}
+.cc-icon{width:52px;height:52px;flex:none;border-radius:16px;background:rgba(240,183,78,.14);border:1px solid rgba(240,183,78,.4);display:flex;align-items:center;justify-content:center}
+.cc-icon svg{width:24px;height:24px;color:var(--gold)}
+.cust-conclusion h4{font-family:var(--font-display);font-weight:800;font-size:1.3rem;margin-bottom:8px}
+.cust-conclusion p{color:var(--cream-dim);font-size:.93rem}
+.cust-conclusion b{color:var(--gold)}
+@media(max-width:860px){.cust-grid{grid-template-columns:1fr}.cust-conclusion{flex-direction:column;gap:16px}}
+
+/* ---------------- REFLEKSI PRIBADI ---------------- */
+.editable-hint{color:var(--gold);font-weight:600}
+.refl-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.refl-card{background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:28px;transition:.3s}
+.refl-card:hover{border-color:rgba(240,183,78,.35);transform:translateY(-4px)}
+.refl-head{display:flex;align-items:center;gap:13px;margin-bottom:6px}
+.refl-ava{width:46px;height:46px;flex:none;border-radius:14px;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:900;font-size:1.15rem;color:#181410;background:var(--ac,#f0b74e);transform:rotate(-4deg);box-shadow:0 8px 18px -6px color-mix(in srgb,var(--ac,#f0b74e) 55%,transparent)}
+.refl-head h4{font-family:var(--font-display);font-size:1.15rem}
+.refl-head span{font-family:var(--font-mono);font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.refl-qa{margin-top:16px}
+.refl-q{font-family:var(--font-mono);font-size:.66rem;letter-spacing:.06em;color:var(--gold);line-height:1.6}
+.refl-ans{margin-top:8px;background:rgba(18,16,13,.5);border:1px dashed var(--line);border-radius:14px;padding:12px 14px;font-size:.87rem;line-height:1.6;color:var(--muted);font-style:italic;min-height:46px;outline:none;transition:.25s;cursor:text}
+.refl-ans:focus{border-color:var(--gold);border-style:solid;color:var(--cream);font-style:normal;background:rgba(240,183,78,.05);box-shadow:0 0 0 3px rgba(240,183,78,.1)}
+@media(max-width:860px){.refl-grid{grid-template-columns:1fr}}
+
+/* ---------------- KOLASE DOKUMENTASI ---------------- */
+.collage{display:grid;grid-template-columns:repeat(6,1fr);gap:24px}
+.c-banner{
+  grid-column:1/-1;text-align:center;
+  font-family:var(--font-display);font-weight:900;
+  font-size:clamp(1.15rem,2.8vw,1.9rem);color:#231205;
+  background:linear-gradient(180deg,#f8cd55,#efb23f);
+  border:4px solid var(--red);border-radius:16px;padding:22px 18px;
+  box-shadow:0 20px 44px -16px rgba(240,183,78,.35);
+  transform:rotate(-.4deg);
+}
+.c-item{grid-column:span 2;background:#f6efe2;padding:12px 12px 46px;border-radius:6px;box-shadow:0 22px 44px -18px rgba(0,0,0,.7);position:relative;transition:transform .45s cubic-bezier(.2,.7,.2,1)}
+.c-item.wide{grid-column:span 3}
+.c-item::before{content:"";position:absolute;top:-12px;left:50%;transform:translateX(-50%) rotate(-2deg);width:88px;height:26px;background:rgba(240,183,78,.55);border-left:1px dashed rgba(0,0,0,.15);border-right:1px dashed rgba(0,0,0,.15);z-index:2}
+.rot-a{transform:rotate(-1.5deg)}
+.rot-b{transform:rotate(1.2deg)}
+.rot-c{transform:rotate(-.8deg)}
+.c-item:hover{transform:rotate(0) scale(1.04);z-index:3}
+.c-item img{width:100%;aspect-ratio:1.18;object-fit:cover;border-radius:3px;display:block}
+.c-item .c-cap{position:absolute;bottom:12px;left:0;right:0;text-align:center;font-family:var(--font-mono);font-size:.62rem;color:#5a4a35;letter-spacing:.05em;padding:0 8px}
+.c-note{grid-column:span 3;background:linear-gradient(150deg,#2b231c,#201a15);border:1px solid rgba(240,183,78,.35);border-radius:14px;padding:26px;position:relative;box-shadow:0 22px 44px -18px rgba(0,0,0,.7);display:flex;flex-direction:column;gap:12px;transition:transform .45s}
+.c-note:hover{transform:rotate(0) scale(1.03)}
+.c-note h6{font-family:var(--font-mono);font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold)}
+.c-note p{color:var(--cream-dim);font-size:.88rem}
+.c-names{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:auto}
+.c-names span{font-family:var(--font-mono);font-size:.68rem;border:1px solid rgba(240,183,78,.4);color:var(--gold);padding:6px 12px;border-radius:999px}
+.c-names em{font-size:.72rem;color:var(--muted);font-style:italic;margin-left:auto}
+@media(max-width:860px){
+  .collage{grid-template-columns:1fr 1fr;gap:16px}
+  .c-item{grid-column:span 1}
+  .c-item.wide,.c-note{grid-column:span 2}
+  .c-item img{aspect-ratio:1.05}
+}
+@media(max-width:520px){.c-item{grid-column:span 2}}
+
+/* ---------------- PLACE · BUKTI DIGITAL ---------------- */
+.p-strip{margin-top:22px;display:flex;justify-content:center}
+.gofood-card{display:flex;gap:22px;align-items:center;background:var(--surface2);border:1px dashed color-mix(in srgb,var(--cc,#6fb5ce) 50%,transparent);border-radius:22px;padding:18px 22px;max-width:680px;transition:.3s}
+.gofood-card:hover{border-style:solid;transform:translateY(-3px)}
+.gofood-card img{width:148px;flex:none;border-radius:16px;border:1px solid var(--line);box-shadow:0 14px 30px -12px rgba(0,0,0,.7)}
+.gofood-card figcaption{font-size:.87rem;color:var(--muted);line-height:1.65}
+.gofood-card b{color:var(--gold)}
+@media(max-width:560px){.gofood-card{flex-direction:column;text-align:center}}
 
 /* tilt */
 .tilt{transform-style:preserve-3d;transition:transform .35s ease}
@@ -719,12 +746,13 @@ footer::before{content:"";position:absolute;inset:0;background-image:var(--noise
   <div class="nav-links" id="navLinks">
     <a href="#profil">Profil</a>
     <a href="#mix">7P Mix</a>
-    <a href="#widget">Interaktif</a>
     <a href="#swot">SWOT</a>
+    <a href="#pelanggan">Pelanggan</a>
     <a href="#kesimpulan">Kesimpulan</a>
-    <a href="#kuis">Kuis</a>
+    <a href="#refleksi">Refleksi</a>
+    <a href="#dokumentasi">Dokumentasi</a>
   </div>
-  <a class="nav-cta" href="#kuis">Uji Pemahaman →</a>
+  <a class="nav-cta" href="#dokumentasi">Galeri Foto →</a>
   <button class="burger" id="burger" aria-label="Menu">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
   </button>
@@ -778,7 +806,7 @@ footer::before{content:"";position:absolute;inset:0;background-image:var(--noise
         <path class="steam-line s3" d="M110 110 C 100 90, 125 82, 115 60 C 106 44, 128 34, 120 16"/>
       </svg>
       <div class="hero-frame tilt" data-tilt="1">
-        <img src="assets/hero-noodles.jpg" alt="Mangkuk bakmi panas mengepul diangkat dengan sumpit">
+        <img src="assets/hero-bowl.jpg" alt="Semangkuk bakmi ayam asli Bakmi Ason dengan kuah bakso pangsit dan sambal">
       </div>
       <div class="hero-stamp">
         <svg viewBox="0 0 128 128" fill="none">
@@ -830,10 +858,10 @@ footer::before{content:"";position:absolute;inset:0;background-image:var(--noise
       </div>
       <div class="profil-photo reveal d2">
         <figure class="polaroid tape tilt" data-tilt="1">
-          <img src="assets/vendor.jpg" alt="Pedagang kaki lima Indonesia dengan gerobak dagangannya di pinggir jalan">
-          <figcaption>dari gerobak keliling → menetap, 2000—sekarang</figcaption>
+          <img src="assets/dapur.jpg" alt="Karyawan Bakmi Ason sedang meniriskan sayuran dan mi di dapur yang mengepul">
+          <figcaption>dapur Bakmi Ason — dimasak dadakan, tiap porsi</figcaption>
         </figure>
-        <div class="p-note">✦ rintisan gerobak</div>
+        <div class="p-note">✦ dapur aksi</div>
       </div>
     </div>
 
@@ -891,9 +919,10 @@ footer::before{content:"";position:absolute;inset:0;background-image:var(--noise
     <div id="pPanels" style="margin-top:34px"></div>
 
     <div class="mix-photos">
-      <div class="mix-photo reveal"><img src="assets/mie-ayam-top.jpg" alt="Semangkuk bakmi ayam dengan kuah pendamping" loading="lazy"><span>Menu favorit · mi</span></div>
-      <div class="mix-photo reveal d1"><img src="assets/mie-ayam-close.jpg" alt="Bakmi ayam dari dekat dengan daun bawang dan bawang goreng" loading="lazy"><span>Dimasak setelah dipesan</span></div>
-      <div class="mix-photo reveal d2"><img src="assets/pangsit.jpg" alt="Pangsit goreng renyah dengan saus mayonnaise" loading="lazy"><span>Idola berikutnya · pangsit goreng</span></div>
+      <div class="mix-photo reveal"><img src="assets/dapur-aksi.jpg" alt="Proses memasak mi dan sayuran di dapur Bakmi Ason" loading="lazy"><span>Dimasak setelah dipesan</span></div>
+      <div class="mix-photo reveal d1"><img src="assets/ruang-makan.jpg" alt="Suasana ruang makan Bakmi Ason dengan pelanggan" loading="lazy"><span>Suasana makan di tempat</span></div>
+      <div class="mix-photo reveal d2"><img src="assets/papan-menu.jpg" alt="Papan menu Bakmi Ayam Ason dengan daftar harga" loading="lazy"><span>Papan menu · harga bersahabat</span></div>
+      <div class="mix-photo reveal d3"><img src="assets/pangsit.jpg" alt="Pangsit goreng renyah dengan saus mayonnaise" loading="lazy"><span>Idola berikutnya · pangsit goreng</span></div>
     </div>
   </div>
 </section>
@@ -1023,10 +1052,63 @@ footer::before{content:"";position:absolute;inset:0;background-image:var(--noise
   </div>
 </section>
 
+<!-- ================= WAWANCARA PELANGGAN ================= -->
+<section id="pelanggan">
+  <div class="wrap">
+    <div class="eyebrow reveal">04 · Wawancara Pelanggan</div>
+    <h2 class="sec-title reveal">Kata <em>Mereka yang Setia</em></h2>
+    <p class="sec-sub reveal d1">Tak hanya pemilik usaha — kami juga mewawancarai dua pelanggan setia untuk mendengar langsung mengapa Bakmi Ason sulit ditinggalkan.</p>
+
+    <div class="cust-grid" style="margin-top:48px">
+      <article class="cust-card reveal tilt" data-tilt="1">
+        <header class="cust-head">
+          <div class="cust-ava" style="--ac:#f0b74e">Y</div>
+          <div class="cust-id">
+            <h4>Yanto</h4>
+            <span class="cust-since">Pelanggan sejak Bakmi Ason masih bergerobak di depan komplek</span>
+          </div>
+          <span class="cust-badge">Sejak Era Gerobak</span>
+        </header>
+        <dl class="cust-dl">
+          <div><dt><i>❝</i> Alasan memilih Bakmi Ason</dt><dd>Enak, rasa yang konsisten, pelayanan yang cepat dan ramah banget.</dd></div>
+          <div><dt><i>➤</i> Harapan ke depan</dt><dd>Bakmi Ason bisa lebih besar, ruangan yang lebih nyaman, dan bisa lebih banyak dikenal orang Villa Melati.</dd></div>
+          <div><dt><i>✦</i> Inovasi yang menarik</dt><dd>Bisa menambah menu baru yang nggak kalah menarik.</dd></div>
+        </dl>
+      </article>
+
+      <article class="cust-card reveal d1 tilt" data-tilt="1">
+        <header class="cust-head">
+          <div class="cust-ava" style="--ac:#67c1a8">Y</div>
+          <div class="cust-id">
+            <h4>Yuni</h4>
+            <span class="cust-since">Pelanggan sejak Bakmi Ason pindah ke ruko — masih sering mampir, terutama saat hari libur</span>
+          </div>
+          <span class="cust-badge">Sejak Era Ruko</span>
+        </header>
+        <dl class="cust-dl">
+          <div><dt><i>❝</i> Alasan memilih Bakmi Ason</dt><dd>Menurut saya, Bakmi Ason punya rasa yang khas dan kualitasnya tetap terjaga. Ditambah lagi, pelayanannya cepat dan orang-orangnya juga ramah.</dd></div>
+          <div><dt><i>➤</i> Harapan ke depan</dt><dd>Semoga Bakmi Ason semakin maju dan mempunyai tempat yang lebih luas serta nyaman untuk pelanggan — dan semakin dikenal, bukan hanya di Villa Melati tetapi juga di daerah sekitar.</dd></div>
+          <div><dt><i>✦</i> Inovasi yang menarik</dt><dd>Bisa mencoba menghadirkan variasi makanan atau minuman baru agar pelanggan punya lebih banyak pilihan dan tidak bosan dengan menu yang ada.</dd></div>
+        </dl>
+      </article>
+    </div>
+
+    <div class="cust-conclusion reveal d2">
+      <div class="cc-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.6 8.6 0 0 1-3.8-.9L3 20l1-4.9a8.4 8.4 0 1 1 17-3.6Z"/><path d="M8 10h.01M12 10h.01M16 10h.01"/></svg>
+      </div>
+      <div>
+        <h4>Kesimpulan Wawancara Pelanggan</h4>
+        <p>Pelanggan utama UMKM ini adalah masyarakat di sekitar Villa Melati — termasuk pelanggan yang sudah mengenal Bakmi Ason sejak masih berjualan menggunakan gerobak. Kendala yang terkadang muncul adalah <b>tempat usaha yang masih cukup terbatas</b>, sehingga kurang leluasa ketika sedang ramai; kebutuhan yang bisa dikembangkan adalah <b>tempat yang lebih luas dan nyaman</b>. Hal yang paling disukai pelanggan adalah <b>rasa makanan yang enak dan konsisten</b>, serta <b>pelayanan yang cepat dan ramah</b>. Harganya pun terjangkau, dan pelanggan dapat terus tertarik melalui <b>penambahan menu-menu baru yang menarik</b>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ================= KESIMPULAN ================= -->
 <section id="kesimpulan">
   <div class="wrap">
-    <div class="eyebrow reveal">04 · Penutup</div>
+    <div class="eyebrow reveal">05 · Kesimpulan Kelompok</div>
     <h2 class="sec-title reveal">Kesimpulan & <em>Refleksi Kelompok</em></h2>
 
     <div class="kes-grid" style="margin-top:52px">
@@ -1065,37 +1147,138 @@ footer::before{content:"";position:absolute;inset:0;background-image:var(--noise
   <path d="M0 13 Q 30 23 60 13 T 120 13 T 180 13 T 240 13 T 300 13 T 360 13 T 420 13 T 480 13 T 540 13 T 600 13 T 660 13 T 720 13 T 780 13 T 840 13 T 900 13 T 960 13 T 1020 13 T 1080 13 T 1140 13 T 1200 13" stroke="#e0452c" stroke-width="2.5" stroke-linecap="round" opacity=".55"/>
 </svg>
 
-<!-- ================= KUIS ================= -->
-<section id="kuis" style="background:#0d0b09">
+<!-- ================= REFLEKSI PRIBADI ================= -->
+<section id="refleksi" style="background:#0d0b09">
+  <div class="wrap">
+    <div class="eyebrow reveal">06 · Refleksi Pribadi</div>
+    <h2 class="sec-title reveal">Refleksi <em>Masing-Masing dari Kami</em></h2>
+    <p class="sec-sub reveal d1">Setiap anggota menjawab tiga pertanyaan singkat tentang pengalaman wawancara ini. <span class="editable-hint">Kotak jawaban bisa langsung diketik</span> — klik lalu tulis refleksi pribadimu.</p>
+
+    <div class="refl-grid" style="margin-top:48px">
+      <article class="refl-card reveal">
+        <header class="refl-head">
+          <div class="refl-ava" style="--ac:#f0b74e">C</div>
+          <div><h4>Christopher</h4><span>Anggota Kelompok · Kelas XI</span></div>
+        </header>
+        <div class="refl-qa">
+          <div class="refl-q">Q1 · Apa pelajaran paling berharga dari wawancara ini?</div>
+          <div class="refl-ans" contenteditable="true" spellcheck="false">✏️ Klik dan tulis jawaban Christopher di sini…</div>
+        </div>
+        <div class="refl-qa">
+          <div class="refl-q">Q2 · Hal apa yang paling menginspirasi Anda dari pelaku UMKM?</div>
+          <div class="refl-ans" contenteditable="true" spellcheck="false">✏️ Klik dan tulis jawaban Christopher di sini…</div>
+        </div>
+        <div class="refl-qa">
+          <div class="refl-q">Q3 · Jika Anda memiliki usaha sendiri, strategi marketing mix apa yang ingin Anda terapkan? Mengapa?</div>
+          <div class="refl-ans" contenteditable="true" spellcheck="false">✏️ Klik dan tulis jawaban Christopher di sini…</div>
+        </div>
+      </article>
+
+      <article class="refl-card reveal d1">
+        <header class="refl-head">
+          <div class="refl-ava" style="--ac:#8fce6f">C</div>
+          <div><h4>Charles</h4><span>Anggota Kelompok · Kelas XI</span></div>
+        </header>
+        <div class="refl-qa">
+          <div class="refl-q">Q1 · Apa pelajaran paling berharga dari wawancara ini?</div>
+          <div class="refl-ans" contenteditable="true" spellcheck="false">✏️ Klik dan tulis jawaban Charles di sini…</div>
+        </div>
+        <div class="refl-qa">
+          <div class="refl-q">Q2 · Hal apa yang paling menginspirasi Anda dari pelaku UMKM?</div>
+          <div class="refl-ans" contenteditable="true" spellcheck="false">✏️ Klik dan tulis jawaban Charles di sini…</div>
+        </div>
+        <div class="refl-qa">
+          <div class="refl-q">Q3 · Jika Anda memiliki usaha sendiri, strategi marketing mix apa yang ingin Anda terapkan? Mengapa?</div>
+          <div class="refl-ans" contenteditable="true" spellcheck="false">✏️ Klik dan tulis jawaban Charles di sini…</div>
+        </div>
+      </article>
+
+      <article class="refl-card reveal d2">
+        <header class="refl-head">
+          <div class="refl-ava" style="--ac:#6fb5ce">J</div>
+          <div><h4>Josafat</h4><span>Anggota Kelompok · Kelas XI</span></div>
+        </header>
+        <div class="refl-qa">
+          <div class="refl-q">Q1 · Apa pelajaran paling berharga dari wawancara ini?</div>
+          <div class="refl-ans" contenteditable="true" spellcheck="false">✏️ Klik dan tulis jawaban Josafat di sini…</div>
+        </div>
+        <div class="refl-qa">
+          <div class="refl-q">Q2 · Hal apa yang paling menginspirasi Anda dari pelaku UMKM?</div>
+          <div class="refl-ans" contenteditable="true" spellcheck="false">✏️ Klik dan tulis jawaban Josafat di sini…</div>
+        </div>
+        <div class="refl-qa">
+          <div class="refl-q">Q3 · Jika Anda memiliki usaha sendiri, strategi marketing mix apa yang ingin Anda terapkan? Mengapa?</div>
+          <div class="refl-ans" contenteditable="true" spellcheck="false">✏️ Klik dan tulis jawaban Josafat di sini…</div>
+        </div>
+      </article>
+
+      <article class="refl-card reveal d3">
+        <header class="refl-head">
+          <div class="refl-ava" style="--ac:#e0658a">R</div>
+          <div><h4>Rhaema</h4><span>Anggota Kelompok · Kelas XI</span></div>
+        </header>
+        <div class="refl-qa">
+          <div class="refl-q">Q1 · Apa pelajaran paling berharga dari wawancara ini?</div>
+          <div class="refl-ans" contenteditable="true" spellcheck="false">✏️ Klik dan tulis jawaban Rhaema di sini…</div>
+        </div>
+        <div class="refl-qa">
+          <div class="refl-q">Q2 · Hal apa yang paling menginspirasi Anda dari pelaku UMKM?</div>
+          <div class="refl-ans" contenteditable="true" spellcheck="false">✏️ Klik dan tulis jawaban Rhaema di sini…</div>
+        </div>
+        <div class="refl-qa">
+          <div class="refl-q">Q3 · Jika Anda memiliki usaha sendiri, strategi marketing mix apa yang ingin Anda terapkan? Mengapa?</div>
+          <div class="refl-ans" contenteditable="true" spellcheck="false">✏️ Klik dan tulis jawaban Rhaema di sini…</div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= DOKUMENTASI ================= -->
+<section id="dokumentasi" style="background:var(--bg2)">
   <div class="wrap">
     <div style="text-align:center">
-      <div class="eyebrow reveal" style="justify-content:center;">05 · Kuis Singkat</div>
-      <h2 class="sec-title reveal">Sudah Paham <em>7P</em>-nya?</h2>
-      <p class="sec-sub reveal d1" style="margin:0 auto">Lima pertanyaan cepat tentang Bakmi Ason. Buktikan kamu layak jadi pelanggan paling update!</p>
+      <div class="eyebrow reveal" style="justify-content:center;">07 · Dokumentasi Proyek</div>
+      <h2 class="sec-title reveal">Kolase <em>Dokumentasi</em></h2>
+      <p class="sec-sub reveal d1" style="margin:0 auto">Kolase foto kunjungan kami ke Bakmi Ason — dari wawancara dan dapur yang mengepul, hingga papan nama kuningnya yang ikonik.</p>
     </div>
-    <div class="quiz-shell reveal d2">
-      <div id="quizPlay">
-        <div class="quiz-top">
-          <div class="q-step" id="quizStep">Soal 1 / 5</div>
-          <div class="quiz-dots" id="quizDots"></div>
+
+    <div class="collage" style="margin-top:52px">
+      <div class="c-banner reveal">✦ Analisis Marketing Mix 7P pada UMKM Bakmi Ason ✦</div>
+
+      <figure class="c-item wide rot-a reveal">
+        <img src="assets/bareng-narasumber.jpg" alt="Foto kelompok bersama pemilik Bakmi Ason di meja counter">
+        <figcaption class="c-cap">foto kelompok bersama narasumber ✓</figcaption>
+      </figure>
+      <figure class="c-item wide rot-b reveal d1">
+        <img src="assets/hero-bowl.jpg" alt="Produk andalan: bakmi ayam lengkap dengan kuah bakso pangsit">
+        <figcaption class="c-cap">produk andalan Bakmi Ason ✓</figcaption>
+      </figure>
+
+      <figure class="c-item rot-c reveal">
+        <img src="assets/tempat-usaha.jpg" alt="Papan nama kuning Bakmi Ayam Ason di depan ruko Villa Melati Mas">
+        <figcaption class="c-cap">papan nama & tempat usaha ✓</figcaption>
+      </figure>
+      <figure class="c-item rot-b reveal d1">
+        <img src="assets/dapur.jpg" alt="Suasana dapur dan proses memasak saat kunjungan">
+        <figcaption class="c-cap">kegiatan wawancara & proses masak ✓</figcaption>
+      </figure>
+      <figure class="c-item rot-a reveal d2">
+        <img src="assets/papan-menu.jpg" alt="Daftar menu beserta harga Bakmi Ayam Ason">
+        <figcaption class="c-cap">daftar menu & harga ✓</figcaption>
+      </figure>
+
+      <figure class="c-item wide rot-b reveal">
+        <img src="assets/ruang-makan.jpg" alt="Area makan pelanggan di dalam Bakmi Ason saat kunjungan">
+        <figcaption class="c-cap">suasana kunjungan ke lokasi ✓</figcaption>
+      </figure>
+      <div class="c-note wide rot-c reveal d1">
+        <h6>Kesimpulan Singkat ✦</h6>
+        <p>UMKM bertahan bukan karena promosi yang gencar, melainkan rasa yang konsisten, harga bersahabat, dan pelayanan yang tulus — resep 26 tahun Bakmi Ason.</p>
+        <div class="c-names">
+          <span>Christopher</span><span>Charles</span><span>Josafat</span><span>Rhaema</span>
+          <em>— Kelas XI · PKWU</em>
         </div>
-        <div id="quizQuestion">…</div>
-        <div class="quiz-opts" id="quizOpts"></div>
-        <div id="quizFeedback"></div>
-        <button class="btn btn-primary" id="quizNext">Lanjut
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14m0 0l-6-6m6 6l-6 6"/></svg>
-        </button>
-      </div>
-      <div id="quizResult">
-        <svg class="qr-bowl" viewBox="0 0 100 100" fill="none">
-          <path d="M12 44 h76 c0 26 -16 40 -38 40 s-38 -14 -38 -40 Z" fill="#e0452c"/>
-          <path d="M22 44 q9 -6 14 0 q5 6 14 0 q5 -6 14 0 q5 6 14 0" stroke="#f6d491" stroke-width="5" stroke-linecap="round" fill="none"/>
-          <path d="M58 20 L88 8 M62 26 L92 14" stroke="#c9bca6" stroke-width="4" stroke-linecap="round"/>
-        </svg>
-        <div class="qr-score"><span id="qrNum">0</span><small>/5</small></div>
-        <div class="qr-msg" id="qrMsg"></div>
-        <p class="qr-sub" id="qrSub"></p>
-        <button class="btn btn-ghost" id="quizRestart">↻ Ulangi Kuis</button>
       </div>
     </div>
   </div>
@@ -1110,15 +1293,16 @@ footer::before{content:"";position:absolute;inset:0;background-image:var(--noise
           <svg viewBox="0 0 100 100" fill="none"><path d="M12 44 h76 c0 26 -16 40 -38 40 s-38 -14 -38 -40 Z" fill="#e0452c"/><path d="M22 44 q9 -6 14 0 q5 6 14 0 q5 -6 14 0 q5 6 14 0" stroke="#f6d491" stroke-width="5" stroke-linecap="round" fill="none"/><path d="M58 20 L88 8 M62 26 L92 14" stroke="#c9bca6" stroke-width="4" stroke-linecap="round"/></svg>
           Bakmi Ason
         </h4>
-        <p>Website studi UMKM — Analisis Strategi Pemasaran Bauran (Marketing Mix) 7P terhadap Bakmi Ason, UMKM kuliner legendaris di Serpong Utara, Tangerang Selatan.</p>
+        <p>Website studi UMKM oleh <b style="color:#f0b74e">Christopher, Charles, Josafat & Rhaema</b> — Analisis Bauran Pemasaran (Marketing Mix) 7P terhadap Bakmi Ason, UMKM kuliner legendaris di Serpong Utara, Tangerang Selatan.</p>
       </div>
       <div class="foot-col">
         <h6>Navigasi</h6>
         <a href="#profil">Profil UMKM</a>
         <a href="#mix">Marketing Mix 7P</a>
-        <a href="#widget">Dapur Interaktif</a>
         <a href="#swot">Analisis SWOT</a>
-        <a href="#kuis">Kuis Pemahaman</a>
+        <a href="#pelanggan">Wawancara Pelanggan</a>
+        <a href="#refleksi">Refleksi Pribadi</a>
+        <a href="#dokumentasi">Kolase Dokumentasi</a>
       </div>
       <div class="foot-col">
         <h6>Tentang Tugas</h6>
@@ -1129,7 +1313,7 @@ footer::before{content:"";position:absolute;inset:0;background-image:var(--noise
       </div>
     </div>
     <div class="foot-bottom">
-      <span>© 2026 Kelompok UMKM Hunter · PKWU Kelas 11</span>
+      <span>© 2026 Christopher · Charles · Josafat · Rhaema — PKWU Kelas XI</span>
       <span>Dibuat dengan mi, sumpit & semangat ✦</span>
     </div>
   </div>
@@ -1170,6 +1354,8 @@ const P_DATA = [
   },
   {
     id:"place", p:"P3", name:"Place", tag:"Tempat — lokasi & distribusi", color:"#6fb5ce",
+    photo:"assets/gofood.jpg",
+    photoCap:`<b>Bukti digital ✦</b> Bakmi Ayam Ason sudah terdaftar di aplikasi pesan-antar — meraih rating <b>4,8★</b> dari <b>3.000+</b> ulasan dan lencana <b>“Top Service”</b>. Meski begitu, mayoritas pelanggan tetap datang langsung ke lokasi.`,
     icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 12-9 12S3 17 3 10a9 9 0 1 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>',
     strategi:[
       "Lokasi dipilih sejak awal berdiri dan dipakai konsisten bertahun-tahun, sehingga pelanggan sudah hafal keberadaannya.",
@@ -1269,7 +1455,14 @@ P_DATA.forEach((d, i) => {
           ${d.saran.map((s,k)=>`<li><span class="num">${String(k+1).padStart(2,'0')}</span><span>${s}</span></li>`).join('')}
         </ul>
       </div>
-    </div>`;
+    </div>
+    ${d.photo ? `
+    <div class="p-strip">
+      <figure class="gofood-card">
+        <img src="${d.photo}" alt="Tangkapan layar listing Bakmi Ayam Ason di aplikasi pesan-antar" loading="lazy">
+        <figcaption>${d.photoCap}</figcaption>
+      </figure>
+    </div>` : ''}`;
   panelsWrap.appendChild(panel);
 });
 
@@ -1451,119 +1644,6 @@ cookBtn.addEventListener('click', ()=>{
     cookBtn.disabled = false;
   }, 1680);
 });
-
-/* =========================================================
-   QUIZ
-========================================================= */
-const QUIZ = [
-  {q:"Apa produk utama yang paling disukai konsumen Bakmi Ason?",
-   o:["Nasi goreng","Mi 🍜","Bakso","Sate"], a:1,
-   f:"Betul! Mi adalah menu favorit — bahkan dipesan dengan tingkat kematangan sesuai selera."},
-  {q:"Menurut narasumber, berapa lama proses memasak mi di Bakmi Ason?",
-   o:["Sekitar 15 menit","5–10 menit","Kurang dari 1 menit ⚡","30 menit"], a:2,
-   f:"Kurang dari satu menit! Kecepatan ini salah satu kekuatan utamanya."},
-  {q:"Bagaimana Bakmi Ason menentukan harga jual makanannya?",
-   o:["Ikut-ikutan kompetitor","Berdasarkan harga bahan baku","Semahal mungkin","Harga random tiap hari"], a:1,
-   f:"Tepat — harga menyesuaikan harga bahan baku dari pemasok."},
-  {q:"Bentuk promosi yang berjalan pada Bakmi Ason saat ini adalah…",
-   o:["Iklan TV","Endorse influencer","Rekomendasi pelanggan (word of mouth)","Spam brosur"], a:2,
-   f:"Word of mouth! Rasa + pelayanan ramah membuat pelanggan merekomendasikannya."},
-  {q:"Manakah yang termasuk Physical Evidence khas Bakmi Ason?",
-   o:["Kemasan kertas / cup","Billboard raksasa","Aplikasi sendiri","Seragam bermerek"], a:0,
-   f:"Benar! Kemasan kertas/cup banyak diminta konsumen dan jadi ciri khas."}
-];
-let qIdx = 0, qScore = 0, qLock = false;
-const quizStep = document.getElementById('quizStep');
-const quizDots = document.getElementById('quizDots');
-const quizQ = document.getElementById('quizQuestion');
-const quizOpts = document.getElementById('quizOpts');
-const quizFb = document.getElementById('quizFeedback');
-const quizNext = document.getElementById('quizNext');
-const LTR = ['A','B','C','D'];
-
-function renderDots(){
-  quizDots.innerHTML = '';
-  QUIZ.forEach((_,i)=>{
-    const d = document.createElement('i');
-    if(i===qIdx) d.classList.add('cur');
-    quizDots.appendChild(d);
-  });
-}
-function renderQ(){
-  const item = QUIZ[qIdx];
-  qLock = false;
-  quizStep.textContent = `Soal ${qIdx+1} / ${QUIZ.length}`;
-  quizQ.textContent = item.q;
-  quizFb.textContent = 'Pilih satu jawaban jujur dari hati…';
-  quizFb.className = '';
-  quizNext.classList.remove('show');
-  renderDots();
-  quizOpts.innerHTML = '';
-  item.o.forEach((opt,i)=>{
-    const b = document.createElement('button');
-    b.className = 'q-opt';
-    b.innerHTML = `<span class="q-letter">${LTR[i]}</span><span>${opt}</span>`;
-    b.addEventListener('click', ()=> answer(i, b));
-    quizOpts.appendChild(b);
-  });
-  quizQ.animate([{opacity:0,transform:'translateX(18px)'},{opacity:1,transform:'none'}],{duration:350,easing:'ease-out'});
-}
-function answer(i, btn){
-  if(qLock) return;
-  qLock = true;
-  const item = QUIZ[qIdx];
-  const opts = [...quizOpts.children];
-  opts.forEach((o,k)=>{
-    o.classList.add('locked');
-    if(k===item.a) o.classList.add('correct');
-    else if(k===i) o.classList.add('wrong');
-    else o.classList.add('dim');
-  });
-  const dot = quizDots.children[qIdx];
-  if(i===item.a){
-    qScore++;
-    dot.classList.add('ok');
-    quizFb.textContent = '✓ ' + item.f;
-    quizFb.classList.add('good');
-  }else{
-    dot.classList.add('bad');
-    quizFb.textContent = '✗ Kurang tepat. ' + item.f;
-    quizFb.classList.add('bad');
-  }
-  quizNext.classList.add('show');
-  quizNext.textContent = qIdx === QUIZ.length-1 ? 'Lihat Hasil →' : 'Lanjut →';
-}
-quizNext.addEventListener('click', ()=>{
-  if(qIdx < QUIZ.length-1){ qIdx++; renderQ(); }
-  else showResult();
-});
-function showResult(){
-  document.getElementById('quizPlay').style.display = 'none';
-  const res = document.getElementById('quizResult');
-  res.classList.add('show');
-  const numEl = document.getElementById('qrNum');
-  const t0 = performance.now(), dur = 1100;
-  (function tick(t){
-    const k = Math.min(1,(t-t0)/dur);
-    numEl.textContent = Math.round(qScore * (1-Math.pow(1-k,3)));
-    if(k<1) requestAnimationFrame(tick);
-  })(t0);
-  const msgs = {
-    5:["Pelanggan Sejati Bakmi Ason! 🏆","Sempurna — kamu paham betul seluruh analisis 7P. Selamat menyeruput mi al dente-mu!"],
-    4:["Nyaris Master 7P! 🍜","Empat dari lima benar — tinggal sedikit lagi jadi pakar UMKM."],
-    3:["Anak Magang Dapur 👨‍🍳","Lumayan! Coba baca ulang bagian 7P yang tadi terlewat."],
-  };
-  const m = msgs[qScore>=5?5:qScore>=4?4:qScore>=3?3:0] || ["Masih Perlu Nambah Porsi 📚","Tidak apa-apa — jelajahi lagi websitenya, lalu ulangi kuisnya!"];
-  document.getElementById('qrMsg').textContent = m[0];
-  document.getElementById('qrSub').textContent = m[1];
-}
-document.getElementById('quizRestart').addEventListener('click', ()=>{
-  qIdx = 0; qScore = 0;
-  document.getElementById('quizResult').classList.remove('show');
-  document.getElementById('quizPlay').style.display = '';
-  renderQ();
-});
-renderQ();
 </script>
-</body>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a294a7de2d0c4b1b',t:'MTc4NjQyNDIwNw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
